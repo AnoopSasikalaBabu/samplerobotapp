@@ -46,3 +46,4 @@ ADD . /usr/local/bin
 #RUN ln -s /usr/local/bin/docker-entrypoint.sh
 #RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 #ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT [‘/run_tests.sh’]
