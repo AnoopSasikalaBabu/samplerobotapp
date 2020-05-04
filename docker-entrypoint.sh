@@ -30,18 +30,18 @@ do
   #echo "Resetting database"
   # wget --spider -q -T 90 $RESET_DB
 
-  if [ $? -ne 0 ]
-  then
-    echo "Error resetting database before rerun"
-    exit 1
-  fi
+  #if [ $? -ne 0 ]
+  #then
+    #echo "Error resetting database before rerun"
+    #exit 1
+  #fi
 
   echo "Executing failed tests"
-  cd Execution_Results
-  pabot --processes 2 --rerunfailed /usr/local/bin/Execution_Results/outputs01.xml --outputdir /usr/local/bin/Execution_Results --output outputs01re.xml  TC*.robot  
+  #cd Execution_Results
+  pabot --processes 2 --rerunfailed /usr/local/bin/Execution_Results/outputs01.xml --outputdir /usr/local/bin/Execution_Results --output outputs01re.xml  Cust*.robot 
 
   echo "Merging results"
-  cd Execution_Results	
+  cd /usr/local/bin/Execution_Results	
   rebot --merge outputs01.xml outputs01re.xml
 
   if [ $? -eq 0 ]
