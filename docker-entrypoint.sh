@@ -20,6 +20,7 @@ pabot --processes 1 --outputdir /usr/local/bin/Execution_Results --output output
 if [ $? -eq 0 ]
 then
   echo "Tests successful, skipping rerun"
+  sleep 200
   exit 0
 fi
 
@@ -37,13 +38,13 @@ do
   #fi
 
   echo "Executing failed tests"
-  #cd Execution_Results
+  cd  /usr/local/bin/UIV3/src
   pabot --processes 2 --rerunfailed /usr/local/bin/Execution_Results/outputs01.xml --outputdir /usr/local/bin/Execution_Results --output outputs01re.xml  Cust*.robot 
 
   echo "Merging results"
   cd /usr/local/bin/Execution_Results	
   rebot --merge outputs01.xml outputs01re.xml
-
+  cd  /usr/local/bin/UIV3/src
   if [ $? -eq 0 ]
   then
     echo "All tests passed"
